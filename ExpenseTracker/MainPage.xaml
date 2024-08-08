@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ExpenseTracker.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodel="clr-namespace:ExpenseTracker.ViewModels"
+    x:DataType="viewmodel:MainViewModel"
+    Shell.NavBarIsVisible="False">
+
+    <Grid
+        Padding="20"
+        ColumnDefinitions="0.3*,0.4*,0.3*"
+        RowDefinitions="auto,auto,auto,auto,auto,auto,auto"
+        RowSpacing="10">
+
+        <Image
+            Grid.ColumnSpan="3"
+            Margin="0,60,0,0"
+            HeightRequest="200"
+            Source="expense.png"
+            WidthRequest="200" />
+
+        <Label
+            Grid.Row="1"
+            Grid.ColumnSpan="3"
+            Margin="0,60,0,0"
+            FontAttributes="Bold"
+            FontSize="35"
+            HorizontalTextAlignment="Center"
+            TextColor="LawnGreen">
+            Welcome To
+        </Label>
+
+        <Label
+            Grid.Row="2"
+            Grid.ColumnSpan="3"
+            FontAttributes="Bold"
+            FontSize="40"
+            HorizontalTextAlignment="Center"
+            TextColor="Orange">
+            Personal Expense Tracker
+        </Label>
+
+        <Label
+            Grid.Row="3"
+            Grid.ColumnSpan="3"
+            Margin="0,50,0,0"
+            FontSize="18"
+            HorizontalTextAlignment="Center"
+            TextColor="LightGray">
+            Please Enter Your Name To Continue:
+        </Label>
+
+        <Entry
+            Grid.Row="4"
+            Grid.ColumnSpan="3"
+            Margin="0,10,0,10"
+            FontSize="18"
+            HorizontalTextAlignment="Center"
+            Placeholder="Enter Your Name"
+            Text="{Binding UserName}"
+            TextColor="LightGray"
+            WidthRequest="700" />
+
+        <Button
+            Grid.Row="5"
+            Grid.Column="1"
+            Grid.ColumnSpan="1"
+            Margin="0,10,0,10"
+            BackgroundColor="BlueViolet"
+            Command="{Binding ContinueCommand}"
+            FontAttributes="Bold"
+            MaximumWidthRequest="300"
+            Text="Continue"
+            TextColor="white" />
+
+        <Label
+            Grid.Row="6"
+            Grid.ColumnSpan="3"
+            Margin="0,0,0,10"
+            FontSize="16"
+            HorizontalTextAlignment="Center"
+            Text="{Binding UserNameErrorMessage}"
+            TextColor="OrangeRed" />
+
+    </Grid>
+
+</ContentPage>

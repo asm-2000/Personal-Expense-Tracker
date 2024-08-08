@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ExpenseTracker.Pages.AddExpensePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodel="clr-namespace:ExpenseTracker.ViewModels"
+    x:DataType="viewmodel:AddExpenseViewModel"
+    Shell.NavBarIsVisible="False">
+
+    <Grid
+        Padding="20"
+        ColumnDefinitions="0.2*,0.6*,0.2*"
+        RowDefinitions="auto,auto,auto,auto,auto,auto,auto,auto,auto"
+        RowSpacing="10">
+
+        <Label
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Margin="0,30,0,0"
+            FontAttributes="Bold"
+            FontSize="35"
+            HorizontalTextAlignment="Center"
+            Text="Enter Expense Details:"
+            TextColor="Orange" />
+
+        <Label
+            Grid.Row="1"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Margin="0,50,0,0"
+            FontAttributes="Bold"
+            FontSize="18"
+            Text="Expense Title:" />
+
+        <Entry
+            Grid.Row="2"
+            Grid.Column="1"
+            Grid.ColumnSpan="1"
+            BackgroundColor="#222021"
+            FontSize="15"
+            Placeholder="Enter Expense Title"
+            Text="{Binding ExpenseTitle}"
+            TextColor="LightGray" />
+
+        <Label
+            Grid.Row="3"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Margin="0,30,0,0"
+            FontAttributes="Bold"
+            FontSize="18"
+            Text="Expense Description:" />
+
+        <Editor
+            Grid.Row="4"
+            Grid.Column="1"
+            Grid.ColumnSpan="1"
+            BackgroundColor="#222021"
+            FontSize="15"
+            HeightRequest="200"
+            Placeholder="Enter Expense Description"
+            Text="{Binding ExpenseDescription}"
+            TextColor="LightGray" />
+
+        <Label
+            Grid.Row="5"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Margin="0,30,0,0"
+            FontAttributes="Bold"
+            FontSize="18"
+            Text="Expense Amount:" />
+
+        <Entry
+            Grid.Row="6"
+            Grid.Column="1"
+            Grid.ColumnSpan="1"
+            BackgroundColor="#222021"
+            FontSize="15"
+            Placeholder="Enter Expense Amount in Rs"
+            Text="{Binding ExpenseAmount}"
+            TextColor="LightGray" />
+
+        <Button
+            Grid.Row="7"
+            Grid.Column="1"
+            Margin="0,10,0,0"
+            BackgroundColor="BlueViolet"
+            Command="{Binding SaveExpenseDetailCommand}"
+            FontAttributes="Bold"
+            Text="Save Details"
+            TextColor="White" />
+
+        <Label
+            Grid.Row="8"
+            Grid.Column="1"
+            Grid.ColumnSpan="1"
+            FontSize="15"
+            HorizontalTextAlignment="Center"
+            Text="{Binding AddExpenseErrorMessage}"
+            TextColor="OrangeRed" />
+
+
+    </Grid>
+</ContentPage>

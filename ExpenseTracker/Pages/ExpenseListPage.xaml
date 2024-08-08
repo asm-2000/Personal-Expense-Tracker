@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ExpenseTracker.Pages.ExpenseListPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodel="clr-namespace:ExpenseTracker.ViewModels"
+    x:DataType="viewmodel:ExpenseListViewModel"
+    Shell.NavBarIsVisible="False">
+    <ScrollView Orientation="Vertical">
+        <Grid
+            Padding="60"
+            ColumnDefinitions="0.3*,0.4*,0.3*"
+            ColumnSpacing="20"
+            RowDefinitions="auto,auto,*"
+            RowSpacing="20">
+
+            <Label
+                Grid.ColumnSpan="2"
+                Margin="0,30,0,0"
+                FontAttributes="Bold"
+                FontSize="35"
+                Text="Your Expenses:"
+                TextColor="Violet" />
+
+            <ImageButton
+                Grid.Column="2"
+                Grid.ColumnSpan="1"
+                Margin="0,30,0,0"
+                BackgroundColor="Transparent"
+                Command="{Binding AddCommand}"
+                HorizontalOptions="End"
+                MinimumHeightRequest="50"
+                MinimumWidthRequest="50"
+                Source="plus.png" />
+
+            <CollectionView
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Margin="0,30,0,0"
+                ItemsSource="{Binding ExpenseTitleList}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="{x:Type x:String}">
+                        <Grid Padding="0,5">
+                            <Frame BackgroundColor="#141414">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ExpenseListViewModel}}, Path=ExpenseTappedCommand}" CommandParameter="{Binding .}" />
+                                </Frame.GestureRecognizers>
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="20"
+                                    Text="{Binding .}" />
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <CollectionView
+                Grid.Row="1"
+                Grid.Column="2"
+                Grid.ColumnSpan="1"
+                Margin="0,30,0,0"
+                ItemsSource="{Binding ExpenseAmountList}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="{x:Type x:String}">
+                        <Grid Padding="0,5">
+                            <Frame BackgroundColor="#141414">
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="20"
+                                    Text="{Binding .}"
+                                    TextColor="Orange" />
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Label
+                Grid.Row="2"
+                Grid.Column="1"
+                Grid.ColumnSpan="3"
+                FontAttributes="Bold"
+                FontSize="18"
+                HorizontalTextAlignment="Center"
+                Text="{Binding ExpenseListFetchError}"
+                TextColor="LightGray" />
+
+            <Label
+                Grid.Row="3"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Margin="0,30,0,0"
+                Padding="5,0"
+                FontAttributes="Bold"
+                FontSize="25"
+                HorizontalTextAlignment="Start"
+                Text="Total Expense: "
+                TextColor="White" />
+
+            <Label
+                Grid.Row="3"
+                Grid.Column="2"
+                Margin="0,30,0,0"
+                FontAttributes="Bold"
+                FontSize="25"
+                HorizontalTextAlignment="Center"
+                Text="{Binding TotalExpenseAmount}"
+                TextColor="orange" />
+
+        </Grid>
+    </ScrollView>
+
+</ContentPage>
